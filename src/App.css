@@ -14,6 +14,11 @@ body, .app {
   padding: 10px 0;
   background: #2e7c31;
   text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
 }
 .list-books-title h1 {
   font-weight: 400;
@@ -65,13 +70,14 @@ body, .app {
 /* search page */
 
 .search-books-bar {
-  position: fixed;
+  /*position: fixed;*/
   width: 100%;
-  top: 0;
+  top: 100px;
+  position: relative;
   left: 0;
-  z-index: 5;
+  z-index: 4;
   display: flex;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+  box-shadow: 0 0px 0px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
 }
 .search-books-input-wrapper {
   flex: 1;
