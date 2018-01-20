@@ -6,9 +6,18 @@ import sortBy from 'sort-by'
 
 class Bookshelf extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+        this.handleChange = this.handleChange.bind(this);
+    }
     
     static propTypes = {
         books: PropTypes.array.isRequired,
+    }
+
+    handleChange(obj, event) {
+        this.props.handleUpdateBook(obj, event.target.value)
     }
     
 
@@ -30,8 +39,8 @@ class Bookshelf extends Component {
                                             <div className="book-top">
                                                 <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                                                 <div className="book-shelf-changer">
-                                                    <select>
-                                                        <option value="none" disabled>Move to...</option>
+                                                    <select value={this.state.value} onChange={this.handleChange.bind(this, book)}>
+                                                        <option value="" disabled>Move to...</option>
                                                         <option value="currentlyReading">Currently Reading</option>
                                                         <option value="wantToRead">Want to Read</option>
                                                         <option value="read">Read</option>

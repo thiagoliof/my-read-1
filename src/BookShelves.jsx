@@ -5,15 +5,30 @@ import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
 import Bookshelf from './BookShelf'
+import * as BooksAPI from './BooksAPI'
 
 class Bookshelves extends Component {
 
-    static propTypes = {
-        shelves: PropTypes.array.isRequired,
+    state = {
+        query: '',
+        books: []
     }
 
-    state = {
-        query: ''
+    /*
+    currentlyReading = Currently Reading
+    wantToRead = Want to Read
+    read = Read
+    'add none' = None
+    */
+      
+    componentDidMount() {
+        this.getAll();
+    }
+
+    getAll = () => {
+        BooksAPI.getAll().then((books) => {      
+            this.setState({ books:books })
+        })
     }
 
     updateQuery = (query) => {
@@ -24,17 +39,22 @@ class Bookshelves extends Component {
         this.setState({ query: '' })
     }
 
+    updateBook = (book, shelf) => {
+        BooksAPI.update(book, shelf).then((books) => {      
+            this.getAll();
+        })
+    }
+
     render() {
         
-        const { shelves } = this.props
-        const { query } = this.state
+        const { query, books } = this.state
 
         let showingBooks
         if (query) {
             const match = new RegExp(escapeRegExp(query), 'i')
-            showingBooks = shelves.filter((shelf) => match.test(shelf.title))
+            showingBooks = books.filter((shelf) => match.test(shelf.title))
         } else {
-            showingBooks = shelves
+            showingBooks = books
         }
 
         let books_reading
@@ -50,7 +70,7 @@ class Bookshelves extends Component {
         books_read = showingBooks.filter((shelf) => match_read.test(shelf.shelf))
         
         let books_none
-        const match_none = new RegExp(escapeRegExp('none'))
+        const match_none = new RegExp(escapeRegExp('None'))
         books_none = showingBooks.filter((shelf) => match_none.test(shelf.shelf))
 
 
@@ -63,7 +83,7 @@ class Bookshelves extends Component {
                             {query.length > 0 && (
                                 <a className="close-search" onClick={this.clearQuery}>Close</a>
                             )}
-                        <div className="search-books-input-wrapper">
+                            <div className="search-books-input-wrapper">
                             {/*
                             NOTES: The search from BooksAPI is limited to a particular set of search terms.
                             You can find these search terms here:
@@ -87,10 +107,10 @@ class Bookshelves extends Component {
                 {/*Final Search*/}
                 <div className="list-books">
                     <div className="list-books-content">
-                        <Bookshelf title='Currently Reading'    books={books_reading} />
-                        <Bookshelf title='Want to Read'         books={books_want_read} />
-                        <Bookshelf title='Read'                 books={books_read}  />
-                        <Bookshelf title='None'                 books={books_none}  />
+                        <Bookshelf title='Currently Reading'    books={books_reading}       handleUpdateBook={this.updateBook} />
+                        <Bookshelf title='Want to Read'         books={books_want_read} handleUpdateBook={this.updateBook} />
+                        <Bookshelf title='Read'                 books={books_read}  handleUpdateBook={this.updateBook} />
+                        <Bookshelf title='None'                 books={books_none} handleUpdateBook={this.updateBook}  />
                     </div>  
                 </div>
                 <div className="add-book">
