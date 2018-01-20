@@ -1,9 +1,10 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
-import Header from './common/header.jsx'
-import Search from './search.jsx'
+import { Route } from 'react-router-dom'
 
-import Bookshelf from './bookshelf.jsx'
+import Header from './common/header.jsx'
+
+import Bookshelves from './BookShelves.jsx'
+import CreateBook from './CreateBook.jsx'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -17,23 +18,29 @@ class BooksApp extends React.Component {
      */
       books: []
   }
+
+  /*
+  currentlyReading = Currently Reading
+  wantToRead = Want to Read
+  read = Read
+  'add none' = None
+  */
   
   componentDidMount() {
-    BooksAPI.getAll().then((books) => {
+    BooksAPI.getAll().then((books) => {      
       console.log(books)
-      this.setState({ books })
+      this.setState({ books:books })
     })
   }
 
   render() {
     return (
       <div className="app">
-        <Header tittle={'MyReads'} />
-        <Search />  
-        <Bookshelf books={this.state.books} />
-        <div className="open-search">
-            <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-        </div>
+        <Header tittle={'MyReads'} />  
+        <Route path="/" exact render={() => (
+          <Bookshelves shelves={this.state.books} />
+        )}/>
+        <Route path="/create" component={CreateBook} />
       </div>
     )
   }
