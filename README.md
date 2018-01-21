@@ -1,8 +1,7 @@
 Projeto #p1-my-reads do Udacity
 
 ## Instruções para rodar o projeto
-npm -i
-npm start
+npm -i && npm start
 
 ## possiveis problemas
 updateBook = (book, shelf) => {    
