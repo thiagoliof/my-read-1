@@ -1,26 +1,23 @@
-https://github.com/udacity/reactnd-contacts-complete/blob/master/src/App.js
+Gerenciamento de estado está como esperado
+Falar sobre o layout e questionar se vale a pena
+o readme do projeto
 
-{/*Search*/}
-                <div className="search-books">
-                    <div className="search-books-bar">
-                        {/* Verificando se a query lenght > 0 por uma questão de usabilidade */}
-                            {query.length > 0 && (
-                                <a className="close-search" onClick={this.clearQuery}>Close</a>
-                            )}
-                            <div className="search-books-input-wrapper">
-                                <input 
-                                    type="text" 
-                                    value={query} 
-                                    placeholder="Search by title or author"
-                                    onChange={(event) => this.updateQuery(event.target.value)}
-                                    />
-                            </div>
-                    </div>
-                    <div className="search-books-results">
-                        <ol className="books-grid"></ol>
-                    </div>
-                </div>
-                {/*Final Search*/}
+não sei se está otimizado esse método
+
+updateBook = (book, shelf) => {    
+       
+        this.props.onCreateBook(book, shelf);
+
+        let _books = this.state.books.filter((c) => c.id !== book.id)
+        let _books_copy = this.state.books.filter((c) => c.id == book.id)        
+        _books_copy[0].shelf = shelf
+        this.setState((state) => ({
+            books: _books.concat([_books_copy[0]])
+        }))
+    }
+
+não to usando o método orderby
+vou add
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
