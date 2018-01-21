@@ -1,3 +1,27 @@
+https://github.com/udacity/reactnd-contacts-complete/blob/master/src/App.js
+
+{/*Search*/}
+                <div className="search-books">
+                    <div className="search-books-bar">
+                        {/* Verificando se a query lenght > 0 por uma questão de usabilidade */}
+                            {query.length > 0 && (
+                                <a className="close-search" onClick={this.clearQuery}>Close</a>
+                            )}
+                            <div className="search-books-input-wrapper">
+                                <input 
+                                    type="text" 
+                                    value={query} 
+                                    placeholder="Search by title or author"
+                                    onChange={(event) => this.updateQuery(event.target.value)}
+                                    />
+                            </div>
+                    </div>
+                    <div className="search-books-results">
+                        <ol className="books-grid"></ol>
+                    </div>
+                </div>
+                {/*Final Search*/}
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
