@@ -41,7 +41,7 @@ class BooksApp extends React.Component {
             }}
           />
         )}/>
-        <Route path='/create' render={({ history }) => (
+        <Route path='/search' render={({ history }) => (
           <CreateBook
               onCreateBook={(book, shelf) => {
                 this.createBook(book, shelf)
