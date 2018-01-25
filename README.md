@@ -8,5 +8,7 @@ Projeto #p1-my-reads do Udacity
 
 ## Melhorias previstas
 usar método **orderby** 
+
 Arrumar o CSS do projeto
+
 Implementar o Debounce
