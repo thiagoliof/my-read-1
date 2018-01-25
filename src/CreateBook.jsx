@@ -44,10 +44,11 @@ class CreateBook extends Component{
         if(query.length > 0){
             BooksAPI.search(query).then((books) => { 
                 if(!books.error){
-                    // transforma o array pois no metodo search nao vem 
-                    // a propriedade shelf
                     books.map((book)=> {
-                        //confere se shelf nao tem valor
+                        let myBooks = this.props.myBooks.find(x => (x.id === book.id))
+                        if(myBooks){
+                            book.shelf = myBooks.shelf
+                        }
                         if(!book.shelf){
                             book.shelf = 'none'
                         }

@@ -46,6 +46,7 @@ class BooksApp extends React.Component {
               onCreateBook={(book, shelf) => {
                 this.createBook(book, shelf)
               }}
+              myBooks={this.state.books}
           />
         )}/>
       </div>
