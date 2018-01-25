@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import escapeRegExp from 'escape-string-regexp'
 import PropTypes from 'prop-types'
 
-import Bookshelf from './BookShelf'
+import {Bookshelf} from './BookShelf'
 import Header from './common/header.jsx'
 import {match_reading, match_want_read, match_read, match_none} from './common/enum.js'
 
@@ -44,6 +44,7 @@ class Bookshelves extends Component {
                 <Header tittle={'MyReads'} />  
                 <div className="list-books">
                     <div className="list-books-content">
+                        
                         <Bookshelf 
                             title='Currently Reading'    
                             books={showingBooks.filter((shelf) => 
@@ -51,24 +52,28 @@ class Bookshelves extends Component {
                                   }            
                             handleUpdateBook={this.updateBook} 
                         />
+                        
                         <Bookshelf 
                             title='Want to Read'         
                             books={showingBooks.filter((shelf) => 
                                     match_want_read.test(shelf.shelf))}                        
                             handleUpdateBook={this.updateBook} 
                         />
+                        
                         <Bookshelf 
                             title='Read'                 
                             books={showingBooks.filter((shelf) => 
                                 match_read.test(shelf.shelf))}                                  
                             handleUpdateBook={this.updateBook} 
                         />
+                        
                         <Bookshelf 
                             title='None'                 
                             books={showingBooks.filter((shelf) => 
                                 match_none.test(shelf.shelf))}                                  
                             handleUpdateBook={this.updateBook}  
                         />
+                    
                         
                     </div>  
                 </div>

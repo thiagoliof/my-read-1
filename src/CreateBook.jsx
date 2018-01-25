@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import Header from './common/header.jsx'
-import Bookshelf from './BookShelf'
+import {Bookshelf} from './BookShelf'
 import {match_reading, match_want_read, match_read, match_none} from './common/enum.js'
 
 class CreateBook extends Component{
