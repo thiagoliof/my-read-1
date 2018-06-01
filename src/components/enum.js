@@ -1,4 +1,3 @@
-import React from 'react'
 import escapeRegExp from 'escape-string-regexp'
 
 export const match_reading = new RegExp(escapeRegExp('currentlyReading'), 'i')

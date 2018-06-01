@@ -1,14 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-// add uma função aqui
-
 export const Bookshelf = props => {
-    
     const handleChange =(obj, event)  => (
         props.handleUpdateBook(obj, event.target.value)
     )
-
     return (
         <div>
             <br/>
