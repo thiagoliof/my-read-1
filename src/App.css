@@ -201,3 +201,10 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+.back-button{
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  color: white;
+
+}

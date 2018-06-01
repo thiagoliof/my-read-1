@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 export default props => (
     <div>        
         <div className="list-books-title">
-            <h1>{props.tittle}</h1>
             {props.backbutton === true && (
-                <Link to="/">Voltar</Link>
+                <Link to="/" className={"back-button"}>Voltar</Link>
             )}
+            <h1>My Reads</h1>
         </div>
     </div>
 )

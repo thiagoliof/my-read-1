@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import {Bookshelf} from './BookShelf'
+import { Bookshelf } from './BookShelf'
 import Header from './Header'
 import {match_reading, match_want_read, match_read, match_none} from '../helpers/enum.js'
 
@@ -33,12 +33,12 @@ class Bookshelves extends Component {
 
     render() {
         
-        const { books } = this.prop
+        const { books } = this.props
         let showingBooks = books
         
         return (
             <div>
-                <Header tittle={'MyReads'} />  
+                <Header />  
                 <div className="list-books">
                     <div className="list-books-content">
                         

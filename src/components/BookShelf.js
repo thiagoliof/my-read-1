@@ -14,6 +14,7 @@ export const Bookshelf = props => {
                     <div className="bookshelf-books">
                         <ol className="books-grid">
                             {props.books.map((book) => (
+                                
                                 <li key={book.id}>
                                     <div className="book">
                                         <div className="book-top">
@@ -39,6 +40,7 @@ export const Bookshelf = props => {
                                         </div>
                                     </div>
                                 </li>
+                                
                             ))}
                             
                         </ol>
