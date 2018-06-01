@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
-import Header from './common/header.jsx'
+import * as BooksAPI from '../helpers/BooksAPI'
+import Header from './Header.js'
 import {Bookshelf} from './BookShelf'
-import {match_reading, match_want_read, match_read, match_none} from './common/enum.js'
+import {match_reading, match_want_read, match_read, match_none} from '../helpers/enum.js'
 
 class CreateBook extends Component{
 
@@ -33,7 +32,7 @@ class CreateBook extends Component{
         this.props.onCreateBook(book, shelf);
 
         let _books = this.state.books.filter((c) => c.id !== book.id)
-        let _books_copy = this.state.books.filter((c) => c.id == book.id)        
+        let _books_copy = this.state.books.filter((c) => c.id === book.id)        
         _books_copy[0].shelf = shelf
         this.setState((state) => ({
             books: _books.concat([_books_copy[0]])

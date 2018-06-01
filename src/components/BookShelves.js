@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import escapeRegExp from 'escape-string-regexp'
 import PropTypes from 'prop-types'
 
 import {Bookshelf} from './BookShelf'
-import Header from './common/header.jsx'
-import {match_reading, match_want_read, match_read, match_none} from './common/enum.js'
+import Header from './Header'
+import {match_reading, match_want_read, match_read, match_none} from '../helpers/enum.js'
 
 class Bookshelves extends Component {
 
@@ -34,9 +33,7 @@ class Bookshelves extends Component {
 
     render() {
         
-        const { query } = this.state
-        const { books } = this.props
-
+        const { books } = this.prop
         let showingBooks = books
         
         return (
