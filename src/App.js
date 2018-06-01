@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import Bookshelves from './BookShelves.jsx'
-import CreateBook from './CreateBook.jsx'
+import Bookshelves from './components/BookShelves.jsx'
+import CreateBook from './components/CreateBook.jsx'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
